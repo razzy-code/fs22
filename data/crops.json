@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Buğday",
+    "sowingMonths": [9, 10],
+    "harvestMonths": [7, 8],
+    "growthTime": "10 ay",
+    "yield": "8000-10000",
+    "bestSoil": "Orta",
+    "priceRange": "₺800-₺1200 / 1000L",
+    "equipment": "Ekim makinesi, Biçerdöver, Römork",
+    "notes": "Un üretimi veya doğrudan satış için kullanılabilir."
+  },
+  {
+    "id": 2,
+    "name": "Kanola",
+    "sowingMonths": [8, 9],
+    "harvestMonths": [6, 7],
+    "growthTime": "10 ay",
+    "yield": "4000-6000",
+    "bestSoil": "Orta ila ağır",
+    "priceRange": "₺1000-₺1500 / 1000L",
+    "equipment": "Ekim makinesi, Biçerdöver, Römork",
+    "notes": "Yüksek değerli, düşük verimli mahsul."
+  }
+]

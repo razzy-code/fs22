@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "product": "Buğday",
+    "sellPoint": "Tahıl Fabrikası",
+    "price": 1200,
+    "date": "2025-07-01",
+    "quantity": 10000,
+    "unit": "litre"
+  },
+  {
+    "id": 2,
+    "product": "Süt",
+    "sellPoint": "Süt Tesisi",
+    "price": 1100,
+    "date": "2025-07-01",
+    "quantity": 2000,
+    "unit": "litre"
+  }
+]
