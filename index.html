@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Simulator 22 - Yardımcı Asistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fs22.css">
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+</head>
+<body>
+    <div class="app-container">
+        <header class="fs22-header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/logo.png" alt="FS22 Logo" class="logo">
+                    <h1>FS22</h1>
+                </div>
+                <div class="date-weather">
+                    <div class="current-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date">Yükleniyor...</span>
+                    </div>
+                    <div class="game-time">
+                        <i class="fas fa-clock"></i>
+                        <span id="game-time">08:00</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Ana navigasyon sekmeleri -->
+        <nav class="fs22-tabs">
+            <ul>
+                <li class="active" data-tab="crop-calendar"><i class="fas fa-calendar"></i> Mahsul Takvimi</li>
+                <li data-tab="price-tracker"><i class="fas fa-chart-line"></i> Fiyat Takipçisi</li>
+                <li data-tab="task-manager"><i class="fas fa-tasks"></i> Görev Yöneticisi</li>
+                <li data-tab="notes"><i class="fas fa-sticky-note"></i> Notlar</li>
+            </ul>
+        </nav>
+
+        <!-- Ana içerik alanı -->
+        <main class="main-content">
+            <!-- Mahsul Takvimi Bölümü -->
+            <section id="crop-calendar" class="content-section active">
+                <h2><i class="fas fa-seedling"></i> Mahsul Takvimi</h2>
+                <div class="search-filter">
+                    <input type="text" id="crop-search" placeholder="Mahsul ara...">
+                    <select id="month-filter">
+                        <option value="all">Tüm Aylar</option>
+                        <option value="1">Ocak</option>
+                        <option value="2">Şubat</option>
+                        <option value="3">Mart</option>
+                        <option value="4">Nisan</option>
+                        <option value="5">Mayıs</option>
+                        <option value="6">Haziran</option>
+                        <option value="7">Temmuz</option>
+                        <option value="8">Ağustos</option>
+                        <option value="9">Eylül</option>
+                        <option value="10">Ekim</option>
+                        <option value="11">Kasım</option>
+                        <option value="12">Aralık</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table id="crop-table">
+                        <thead>
+                            <tr>
+                                <th>Mahsul</th>
+                                <th>Ekim Zamanı</th>
+                                <th>Hasat Zamanı</th>
+                                <th>Büyüme Süresi</th>
+                                <th>Verim (L/ha)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JavaScript ile doldurulacak -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="crop-details" id="crop-details">
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <h3 id="detail-crop-name">Ayrıntılar için bir mahsul seçin</h3>
+                            <button id="close-details" class="btn-close"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="detail-content">
+                            <div class="detail-image">
+                                <img id="detail-crop-image" src="" alt="Mahsul görseli">
+                            </div>
+                            <div class="detail-info">
+                                <p><strong>En Uygun Toprak:</strong> <span id="detail-soil"></span></p>
+                                <p><strong>Fiyat Aralığı:</strong> <span id="detail-price"></span></p>
+                                <p><strong>Gerekli Ekipmanlar:</strong> <span id="detail-equipment"></span></p>
+                                <p><strong>Ek Notlar:</strong> <span id="detail-notes"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fiyat Takipçisi Bölümü -->
+            <section id="price-tracker" class="content-section">
+                <div class="price-tracker-container">
+                    <div class="price-input-section">
+                        <h2><i class="fas fa-coins"></i> Fiyat Hesaplayıcı</h2>
+                        <div class="price-form">
+                            <div class="form-group">
+                                <label for="product-select">Ürün:</label>
+                                <select id="product-select">
+                                    <option value="">Bir ürün seçin</option>
+                                    <!-- JavaScript ile doldurulacak -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sell-point">Satış Noktası:</label>
+                                <select id="sell-point">
+                                    <option value="">Bir satış noktası seçin</option>
+                                    <!-- JavaScript ile doldurulacak -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="current-price">Güncel Fiyat (€):</label>
+                                <input type="number" id="current-price" placeholder="Birim fiyatını girin">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Miktar:</label>
+                                <input type="number" id="quantity" placeholder="Miktarı girin">
+                                <select id="unit-type">
+                                    <option value="liters">Litre</option>
+                                    <option value="units">Adet</option>
+                                    <option value="bales">Balya</option>
+                                    <option value="palets">Palet</option>
+                                </select>
+                            </div>
+                            <button id="calculate-btn" class="btn-calculate">Karı Hesapla</button>
+                            <button id="save-price-btn" class="btn-save">Fiyat Verilerini Kaydet</button>
+                        </div>
+                    </div>
+                    
+                    <div class="price-result-section">
+                        <div class="result-card">
+                            <h3>Kar Hesaplaması</h3>
+                            <div class="result-details">
+                                <p>Ürün: <span id="result-product">-</span></p>
+                                <p>Satış Noktası: <span id="result-point">-</span></p>
+                                <p>Fiyat: <span id="result-price">-</span> €/<span id="result-unit">-</span></p>
+                                <p>Miktar: <span id="result-quantity">-</span> <span id="result-quantity-unit">-</span></p>
+                                <div class="total-profit">
+                                    <h4>Toplam Kar:</h4>
+                                    <p id="total-profit">0 €</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="best-price-card">
+                            <h3><i class="fas fa-trophy"></i> En İyi Güncel Fiyatlar</h3>
+                            <table id="best-price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ürün</th>
+                                        <th>En İyi Fiyat</th>
+                                        <th>Konum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- JavaScript ile doldurulacak -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-history-section">
+                    <h2><i class="fas fa-chart-bar"></i> Fiyat Geçmişi</h2>
+                    <div class="history-controls">
+                        <select id="history-product">
+                            <option value="">Geçmişi görüntülemek için ürün seçin</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                        <select id="history-location">
+                            <option value="">Konum seçin</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                        <button id="view-history" class="btn-view">Geçmişi Görüntüle</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="price-chart"></canvas>
+                    </div>
+                    <div class="history-table-container">
+                        <table id="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Fiyat</th>
+                                    <th>Konum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JavaScript ile doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Görev Yöneticisi Bölümü -->
+            <section id="task-manager" class="content-section">
+                <div class="task-manager-container">
+                    <div class="task-input-section">
+                        <h2><i class="fas fa-clipboard-list"></i> Görev Yöneticisi</h2>
+                        <div class="task-form">
+                            <div class="form-group">
+                                <label for="task-name">Görev:</label>
+                                <input type="text" id="task-name" placeholder="Yapılacak görevi girin">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-field">Tarla Numarası:</label>
+                                <input type="text" id="task-field" placeholder="Tarla No (isteğe bağlı)">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-date">Bitiş Tarihi:</label>
+                                <input type="date" id="task-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-priority">Öncelik:</label>
+                                <select id="task-priority">
+                                    <option value="low">Düşük</option>
+                                    <option value="medium" selected>Orta</option>
+                                    <option value="high">Yüksek</option>
+                                </select>
+                            </div>
+                            <button id="add-task-btn" class="btn-add-task">Görev Ekle</button>
+                        </div>
+                    </div>
+                    
+                    <div class="task-list-section">
+                        <div class="task-filter">
+                            <button class="filter-btn active" data-filter="all">Tüm Görevler</button>
+                            <button class="filter-btn" data-filter="today">Bugün</button>
+                            <button class="filter-btn" data-filter="pending">Bekleyen</button>
+                            <button class="filter-btn" data-filter="completed">Tamamlanan</button>
+                        </div>
+                        
+                        <div class="task-list" id="task-list">
+                            <!-- Görevler JavaScript ile buraya eklenecek -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notlar Bölümü -->
+            <section id="notes" class="content-section">
+                <div class="notes-container">
+                    <div class="notes-input-section">
+                        <h2><i class="fas fa-edit"></i> Notlar</h2>
+                        <div class="notes-form">
+                            <div class="form-group">
+                                <label for="note-title">Başlık:</label>
+                                <input type="text" id="note-title" placeholder="Not başlığı">
+                            </div>
+                            <div class="form-group">
+                                <label for="note-category">Kategori:</label>
+                                <select id="note-category">
+                                    <option value="general">Genel</option>
+                                    <option value="fields">Tarlalar</option>
+                                    <option value="animals">Hayvanlar</option>
+                                    <option value="equipment">Ekipmanlar</option>
+                                    <option value="finance">Finans</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="note-content">İçerik:</label>
+                                <textarea id="note-content" placeholder="Notunuzu buraya yazın..."></textarea>
+                            </div>
+                            <button id="save-note-btn" class="btn-save-note">Notu Kaydet</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notes-list-section">
+                        <div class="notes-filter">
+                            <input type="text" id="note-search" placeholder="Notlarda ara...">
+                            <select id="note-category-filter">
+                                <option value="all">Tüm Kategoriler</option>
+                                <option value="general">Genel</option>
+                                <option value="fields">Tarlalar</option>
+                                <option value="animals">Hayvanlar</option>
+                                <option value="equipment">Ekipmanlar</option>
+                                <option value="finance">Finans</option>
+                            </select>
+                        </div>
+                        
+                        <div class="notes-list" id="notes-list">
+                            <!-- Notlar JavaScript ile buraya eklenecek -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Altbilgi -->
+        <footer class="fs22-footer">
+            <p>FS22 Asistan - Farming Simulator 22 Yardımcı Aracı</p>
+            <p>Veriler tarayıcınızda yerel olarak saklanır</p>
+            <div class="footer-links">
+                <button id="export-data" class="btn-footer">Verileri Dışa Aktar</button>
+                <button id="import-data" class="btn-footer">Verileri İçe Aktar</button>
+                <button id="reset-data" class="btn-footer">Verileri Sıfırla</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Onay Kutusu -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Eylemi Onayla</h3>
+            <p id="modal-message">Bu eylemi gerçekleştirmek istediğinizden emin misiniz?</p>
+            <div class="modal-buttons">
+                <button id="modal-cancel" class="btn-modal btn-cancel">İptal</button>
+                <button id="modal-confirm" class="btn-modal btn-confirm">Onayla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- İçe/Dışa Aktarma Kutusu -->
+    <div class="modal" id="data-modal">
+        <div class="modal-content">
+            <h3 id="data-modal-title">Veri İşlemleri</h3>
+            <div class="data-modal-content">
+                <textarea id="data-textarea" placeholder="Veriler burada görünecek..."></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button id="data-modal-cancel" class="btn-modal btn-cancel">Kapat</button>
+                <button id="data-modal-action" class="btn-modal btn-confirm">Kopyala</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bildirim Kutusu -->
+    <div class="toast" id="toast-notification">
+        <div class="toast-content">
+            <span id="toast-message">Bildirim mesajı burada görüntülenir</span>
+        </div>
+    </div>
+
+    <!-- Scriptler -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="fs22.js"></script>
+</body>
+</html>
