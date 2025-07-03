@@ -1,0 +1,17 @@
+{
+  "name": "static-site",
+  "version": "1.0.0",
+  "description": "Basit statik site için package.json",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -s ."
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "",
+  "license": "ISC"
+}
